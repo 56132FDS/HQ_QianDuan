@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>教师学生信息</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>学生信息</h1>
+
+        <div class="section">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>姓名</th>
+                        <th>选课情况</th>
+                        <th>签到情况</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="student : ${students}">
+                        <td th:text="${student.id}"></td>
+                        <td th:text="${student.name}"></td>
+                        <td th:text="${student.courseid}"></td>
+                        <td th:text="${student.signin}"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

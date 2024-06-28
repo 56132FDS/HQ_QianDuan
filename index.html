@@ -9,15 +9,14 @@
 </head>
 <body>
     <div class="container">
-        <h1>人员信息管理</h1>
-
+        <h1>学生信息管理</h1>
+        <button id="add-student" class="btn add">新增学生</button>
         <div class="section">
-            <h2>学生信息</h2>
             <table>
                 <thead>
                     <tr>
-                        <th>ID</th>
                         <th>姓名</th>
+                        <th>ID</th>
                         <th>选课情况</th>
                         <th>签到情况</th>
                         <th>操作</th>
@@ -25,59 +24,43 @@
                 </thead>
                 <tbody>
                     <tr th:each="student : ${students}">
-                        <td th:text="${student.id}"></td>
                         <td th:text="${student.name}"></td>
+                        <td th:text="${student.id}"></td>
                         <td th:text="${student.courseid}"></td>
                         <td th:text="${student.signin}"></td>
                         <td>
-                            <button class="btn delete" th:attr="data-id=${student.id}">删除</button>
-                            <button class="btn update" th:attr="data-id=${student.id}">更新</button>
+                            <button class="btn update" th:if="${student.name}" data-id="${student.id}">修改</button>
+                            <button class="btn delete" th:if="${student.name}" data-id="${student.id}">删除</button>
                         </td>
                     </tr>
                 </tbody>
             </table>
-
-            <h3>添加学生</h3>
-            <form id="add-student-form" action="/add_student" method="post">
-                <input type="text" name="id" placeholder="ID" required>
-                <input type="text" name="name" placeholder="姓名" required>
-                <input type="text" name="courseid" placeholder="选课情况" required>
-                <input type="text" name="signin" placeholder="签到情况" required>
-                <button type="submit" class="btn add">添加</button>
-            </form>
         </div>
-
+        
+        <h1>教师信息管理</h1>
+        <button id="add-teacher" class="btn add">新增教师</button>
         <div class="section">
-            <h2>教师信息</h2>
             <table>
                 <thead>
                     <tr>
-                        <th>ID</th>
                         <th>姓名</th>
+                        <th>ID</th>
                         <th>开课ID</th>
                         <th>操作</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr th:each="teacher : ${teachers}">
-                        <td th:text="${teacher.id}"></td>
                         <td th:text="${teacher.name}"></td>
+                        <td th:text="${teacher.id}"></td>
                         <td th:text="${teacher.courseid}"></td>
                         <td>
-                            <button class="btn delete" th:attr="data-id=${teacher.id}">删除</button>
-                            <button class="btn update" th:attr="data-id=${teacher.id}">更新</button>
+                            <button class="btn update" th:if="${teacher.name}" data-id="${teacher.id}">修改</button>
+                            <button class="btn delete" th:if="${teacher.name}" data-id="${teacher.id}">删除</button>
                         </td>
                     </tr>
                 </tbody>
             </table>
-
-            <h3>添加教师</h3>
-            <form id="add-teacher-form" action="/add_teacher" method="post">
-                <input type="text" name="id" placeholder="ID" required>
-                <input type="text" name="name" placeholder="姓名" required>
-                <input type="text" name="courseid" placeholder="开课ID" required>
-                <button type="submit" class="btn add">添加</button>
-            </form>
         </div>
     </div>
 </body>
